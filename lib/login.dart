@@ -1,5 +1,32 @@
 import 'package:flutter/material.dart';
 
+class Firstpage extends StatelessWidget {
+  const Firstpage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.tealAccent,
+      appBar: AppBar(
+        backgroundColor: Colors.blueGrey,
+        title: Text(
+          "All In Converter App",
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
+      body: Center(
+        child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => AllCurrencyConveter()));
+            },
+            child: Text("CurrencyConveter")),
+      ),
+    );
+  }
+}
+
 class AllCurrencyConveter extends StatefulWidget {
   const AllCurrencyConveter({super.key});
   @override
@@ -84,6 +111,15 @@ class _Currencyy extends State {
                     });
                   },
                   child: Text("convert")),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Firstpage()));
+                  },
+                  child: Text("main menu")),
             )
           ],
         ),
