@@ -43,6 +43,7 @@ class _Currencyy extends State {
                         fontStyle: FontStyle.italic,
                         fontSize: 14,
                         fontWeight: FontWeight.bold)),
+                keyboardType: TextInputType.numberWithOptions(),
               ),
             ),
             Padding(
@@ -71,6 +72,7 @@ class _Currencyy extends State {
                         fontStyle: FontStyle.italic,
                         fontSize: 14,
                         fontWeight: FontWeight.bold)),
+                keyboardType: TextInputType.numberWithOptions(),
               ),
             ),
             Padding(
