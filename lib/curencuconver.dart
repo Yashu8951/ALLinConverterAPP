@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CurrencyConverter extends StatefulWidget {
   const CurrencyConverter({super.key});
@@ -8,8 +10,56 @@ class CurrencyConverter extends StatefulWidget {
 }
 
 class _Convertre extends State {
-  double? result = 0;
-  final TextEditingController textEditingController = TextEditingController();
+  String fromCurrency = 'INR';
+  String toCurrency = 'USD';
+  String result = '';
+  final TextEditingController currencyConverter = TextEditingController();
+  double currency(double converter, String fromCurrency, String toCurrency) {
+    if (fromCurrency == 'INR' && toCurrency == 'USD') {
+      return converter / 81;
+    }
+    if (fromCurrency == 'USD' && toCurrency == 'INR') {
+      return converter * 81;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'CAD') {
+      return converter / 81;
+    }
+    if (fromCurrency == 'CAD' && toCurrency == 'INR') {
+      return converter * 81;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'INR') {
+      return converter * 89;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'EUR') {
+      return converter * 89;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'GBR') {
+      return converter * 101;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'INR') {
+      return converter / 89;
+    }
+    if (fromCurrency == 'JPY' && toCurrency == 'INR') {
+      return converter / 0.5;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'JPY') {
+      return converter * 0.5;
+    }
+    if (fromCurrency == 'CDY' && toCurrency == 'INR') {
+      return converter / 11.4;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'CDY') {
+      return converter * 11.4;
+    }
+    if (fromCurrency == 'ADU' && toCurrency == 'INR') {
+      return converter / 53;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'ADU') {
+      return converter * 53;
+    }
+
+    return converter;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,68 +74,103 @@ class _Convertre extends State {
         elevation: 22,
         centerTitle: true,
       ),
-      backgroundColor: const Color.fromARGB(255, 206, 214, 218),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              result.toString(),
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 53,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.italic,
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Center(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                result.isEmpty ? 'Enter The Amount To Convert' : result,
+                style: GoogleFonts.lato(
+                    textStyle: TextStyle(
+                  shadows: [
+                    Shadow(
+                        offset: Offset(4.0, 4.0),
+                        blurRadius: 4.0,
+                        color: const Color.fromARGB(255, 5, 75, 121)),
+                  ],
+                  color: const Color.fromARGB(1, 73, 63, 63),
+                  fontSize: 25,
+                )),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: TextField(
-                controller: textEditingController,
-                style: const TextStyle(
-                  color: Color.fromARGB(115, 10, 0, 0),
-                ),
-                decoration: const InputDecoration(
-                  hintText: 'Please enter the amount in USD',
-                  hintStyle: TextStyle(color: Colors.black),
-                  prefixIcon: Icon(Icons.monetization_on),
-                  prefixIconColor: Colors.black,
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.red,
-                      width: 2.0,
-                      style: BorderStyle.solid,
-                    ),
-                    borderRadius: BorderRadius.all(Radius.circular(40)),
-                  ),
-                ),
-                keyboardType:
-                    const TextInputType.numberWithOptions(decimal: true),
-              ),
+            TextField(
+                controller: currencyConverter,
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.blueGrey,
+                    hintText: "Plz Enter The Amount",
+                    hintStyle: TextStyle(color: Colors.white)),
+                style: TextStyle(
+                  color: Colors.blue,
+                )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: DropdownButton(
+                  isExpanded: true,
+                  hint: Text("select iteams"),
+                  value: fromCurrency,
+                  items: [
+                    'INR',
+                    'USD',
+                    'CAD',
+                    'EUR',
+                    'GBR',
+                    'JPY',
+                    'CNY',
+                    'ADU'
+                  ]
+                      .map((unit) =>
+                          DropdownMenuItem(value: unit, child: Text(unit)))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      fromCurrency = value!;
+                    });
+                  },
+                )),
+                Text('to',
+                    style:
+                        GoogleFonts.lato(textStyle: TextStyle(fontSize: 20))),
+                Expanded(
+                    child: DropdownButton2(
+                  value: toCurrency,
+                  items: [
+                    'INR',
+                    'USD',
+                    'CAD',
+                    'EUR',
+                    'GBR',
+                    'JPY',
+                    'CNY',
+                    'ADU'
+                  ]
+                      .map((unit) =>
+                          DropdownMenuItem(value: unit, child: Text(unit)))
+                      .toList(),
+                  onChanged: (value) {
+                    setState(() {
+                      toCurrency = value!;
+                    });
+                  },
+                ))
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: ElevatedButton(
+            ElevatedButton(
                 onPressed: () {
+                  double converter =
+                      double.tryParse(currencyConverter.text) ?? 0;
+                  double convertedcurrency =
+                      currency(converter, fromCurrency, toCurrency);
                   setState(() {
-                    result = double.parse(textEditingController.text) * 81;
+                    result = '$convertedcurrency  $toCurrency';
                   });
                 },
-                style: TextButton.styleFrom(
-                  elevation: 15,
-                  shape: BeveledRectangleBorder(),
-                  minimumSize: Size(double.infinity, 50),
-                  backgroundColor: Colors.amber,
-                ),
-                child: const Text("convert",
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 20, 0, 0),
-                    )),
-              ),
-            ),
-          ],
+                child: Text('Convert'))
+          ]),
         ),
       ),
     );
