@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'curencuconver.dart';
 import 'weight.dart';
 
@@ -27,6 +28,10 @@ class Firstpage extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
+                  Text(
+                    'This converter allows users to quickly and efficiently calculate the value of one currency in terms of another, making it a handy tool for managing finances or staying informed about exchange rates.',
+                    style: GoogleFonts.lato(fontSize: 20),
+                  ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -38,12 +43,17 @@ class Firstpage extends StatelessWidget {
                     },
                     child: const Text("Currency Converter"),
                   ),
+                  Text(
+                    'This tool provides a quick and efficient way to calculate weight in different units, helping you stay on top of your health and fitness goals.',
+                    style: GoogleFonts.lato(fontSize: 20),
+                  ),
                   ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Weight()));
-                      },
-                      child: Text('Weight Clalcuation'))
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Weight()));
+                    },
+                    child: Text('Weight Clalcuation'),
+                  )
                 ],
               ),
             ),

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CurrencyConverter extends StatefulWidget {
   const CurrencyConverter({super.key});
 
   @override
-  State createState() => _Convertre();
+  State<CurrencyConverter> createState() => _CurrencyConverterState();
 }
 
-class _Convertre extends State {
+class _CurrencyConverterState extends State<CurrencyConverter> {
   String fromCurrency = 'INR';
   String toCurrency = 'USD';
   String result = '';
   final TextEditingController currencyConverter = TextEditingController();
+
   double currency(double converter, String fromCurrency, String toCurrency) {
     if (fromCurrency == 'INR' && toCurrency == 'USD') {
       return converter / 81;
@@ -21,43 +21,188 @@ class _Convertre extends State {
     if (fromCurrency == 'USD' && toCurrency == 'INR') {
       return converter * 81;
     }
+
     if (fromCurrency == 'INR' && toCurrency == 'CAD') {
-      return converter / 81;
+      return converter / 60;
     }
     if (fromCurrency == 'CAD' && toCurrency == 'INR') {
-      return converter * 81;
+      return converter * 60;
     }
-    if (fromCurrency == 'EUR' && toCurrency == 'INR') {
-      return converter * 89;
-    }
+
     if (fromCurrency == 'INR' && toCurrency == 'EUR') {
-      return converter * 89;
-    }
-    if (fromCurrency == 'INR' && toCurrency == 'GBR') {
-      return converter * 101;
-    }
-    if (fromCurrency == 'EUR' && toCurrency == 'INR') {
       return converter / 89;
     }
-    if (fromCurrency == 'JPY' && toCurrency == 'INR') {
-      return converter / 0.5;
+    if (fromCurrency == 'EUR' && toCurrency == 'INR') {
+      return converter * 89;
     }
+
+    if (fromCurrency == 'INR' && toCurrency == 'GBP') {
+      return converter / 101;
+    }
+    if (fromCurrency == 'GBP' && toCurrency == 'INR') {
+      return converter * 101;
+    }
+
     if (fromCurrency == 'INR' && toCurrency == 'JPY') {
-      return converter * 0.5;
+      return converter * 1.5;
     }
-    if (fromCurrency == 'CDY' && toCurrency == 'INR') {
+    if (fromCurrency == 'JPY' && toCurrency == 'INR') {
+      return converter / 1.5;
+    }
+    if (fromCurrency == 'INR' && toCurrency == 'CNY') {
       return converter / 11.4;
     }
-    if (fromCurrency == 'INR' && toCurrency == 'CDY') {
+    if (fromCurrency == 'CNY' && toCurrency == 'INR') {
       return converter * 11.4;
     }
-    if (fromCurrency == 'ADU' && toCurrency == 'INR') {
+
+    if (fromCurrency == 'INR' && toCurrency == 'AUD') {
       return converter / 53;
     }
-    if (fromCurrency == 'INR' && toCurrency == 'ADU') {
+    if (fromCurrency == 'AUD' && toCurrency == 'INR') {
       return converter * 53;
     }
 
+    if (fromCurrency == 'USD' && toCurrency == 'EUR') {
+      return converter * 0.9;
+    }
+    if (fromCurrency == 'USD' && toCurrency == 'CAD') {
+      return converter * 1.33;
+    }
+    if (fromCurrency == 'USD' && toCurrency == 'GBP') {
+      return converter * 0.8;
+    }
+    if (fromCurrency == 'USD' && toCurrency == 'JPY') {
+      return converter * 135;
+    }
+    if (fromCurrency == 'USD' && toCurrency == 'CNY') {
+      return converter * 7.1;
+    }
+    if (fromCurrency == 'USD' && toCurrency == 'ADU') {
+      return converter * 1.52;
+    }
+
+    // EUR conversions
+    if (fromCurrency == 'EUR' && toCurrency == 'USD') {
+      return converter / 0.9;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'CAD') {
+      return converter * 1.47;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'GBP') {
+      return converter * 0.88;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'JPY') {
+      return converter * 148;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'CNY') {
+      return converter * 7.8;
+    }
+    if (fromCurrency == 'EUR' && toCurrency == 'ADU') {
+      return converter * 1.65;
+    }
+
+    // CAD conversions
+    if (fromCurrency == 'CAD' && toCurrency == 'USD') {
+      return converter / 1.33;
+    }
+    if (fromCurrency == 'CAD' && toCurrency == 'EUR') {
+      return converter / 1.47;
+    }
+    if (fromCurrency == 'CAD' && toCurrency == 'GBP') {
+      return converter * 0.6;
+    }
+    if (fromCurrency == 'CAD' && toCurrency == 'JPY') {
+      return converter * 101;
+    }
+    if (fromCurrency == 'CAD' && toCurrency == 'CNY') {
+      return converter * 5.35;
+    }
+    if (fromCurrency == 'CAD' && toCurrency == 'ADU') {
+      return converter * 1.12;
+    }
+
+    // GBP conversions
+    if (fromCurrency == 'GBP' && toCurrency == 'USD') {
+      return converter / 0.8;
+    }
+    if (fromCurrency == 'GBP' && toCurrency == 'EUR') {
+      return converter / 0.88;
+    }
+    if (fromCurrency == 'GBP' && toCurrency == 'CAD') {
+      return converter / 0.6;
+    }
+    if (fromCurrency == 'GBP' && toCurrency == 'JPY') {
+      return converter * 167;
+    }
+    if (fromCurrency == 'GBP' && toCurrency == 'CNY') {
+      return converter * 8.5;
+    }
+    if (fromCurrency == 'GBP' && toCurrency == 'ADU') {
+      return converter * 1.9;
+    }
+
+    // JPY conversions
+    if (fromCurrency == 'JPY' && toCurrency == 'USD') {
+      return converter / 135;
+    }
+    if (fromCurrency == 'JPY' && toCurrency == 'EUR') {
+      return converter / 148;
+    }
+    if (fromCurrency == 'JPY' && toCurrency == 'CAD') {
+      return converter / 101;
+    }
+    if (fromCurrency == 'JPY' && toCurrency == 'GBP') {
+      return converter / 167;
+    }
+    if (fromCurrency == 'JPY' && toCurrency == 'CNY') {
+      return converter * 0.052;
+    }
+    if (fromCurrency == 'JPY' && toCurrency == 'ADU') {
+      return converter * 0.01;
+    }
+
+    // CNY conversions
+    if (fromCurrency == 'CNY' && toCurrency == 'USD') {
+      return converter / 7.1;
+    }
+    if (fromCurrency == 'CNY' && toCurrency == 'EUR') {
+      return converter / 7.8;
+    }
+    if (fromCurrency == 'CNY' && toCurrency == 'CAD') {
+      return converter / 5.35;
+    }
+    if (fromCurrency == 'CNY' && toCurrency == 'GBP') {
+      return converter / 8.5;
+    }
+    if (fromCurrency == 'CNY' && toCurrency == 'JPY') {
+      return converter / 0.052;
+    }
+    if (fromCurrency == 'CNY' && toCurrency == 'ADU') {
+      return converter * 0.22;
+    }
+
+    // ADU conversions
+    if (fromCurrency == 'ADU' && toCurrency == 'USD') {
+      return converter / 1.52;
+    }
+    if (fromCurrency == 'ADU' && toCurrency == 'EUR') {
+      return converter / 1.65;
+    }
+    if (fromCurrency == 'ADU' && toCurrency == 'CAD') {
+      return converter / 1.12;
+    }
+    if (fromCurrency == 'ADU' && toCurrency == 'GBP') {
+      return converter / 1.9;
+    }
+    if (fromCurrency == 'ADU' && toCurrency == 'JPY') {
+      return converter / 0.01;
+    }
+    if (fromCurrency == 'ADU' && toCurrency == 'CNY') {
+      return converter / 0.22;
+    }
+
+    // If no matching condition
     return converter;
   }
 
@@ -65,112 +210,153 @@ class _Convertre extends State {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Currency Converter by Yashwanth'),
+        title: const Text('Currency Converter'),
         titleTextStyle: const TextStyle(
-            fontStyle: FontStyle.italic,
-            fontSize: 25,
-            color: Color.fromARGB(255, 5, 0, 0)),
+          fontStyle: FontStyle.italic,
+          fontSize: 25,
+          color: Colors.white,
+        ),
         backgroundColor: Colors.blue,
-        elevation: 22,
+        elevation: 10,
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         child: Center(
-          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                result.isEmpty ? 'Enter The Amount To Convert' : result,
-                style: GoogleFonts.lato(
-                    textStyle: TextStyle(
-                  shadows: [
-                    Shadow(
-                        offset: Offset(4.0, 4.0),
-                        blurRadius: 4.0,
-                        color: const Color.fromARGB(255, 5, 75, 121)),
-                  ],
-                  color: const Color.fromARGB(1, 73, 63, 63),
-                  fontSize: 25,
-                )),
-              ),
-            ),
-            TextField(
-                controller: currencyConverter,
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Colors.blueGrey,
-                    hintText: "Plz Enter The Amount",
-                    hintStyle: TextStyle(color: Colors.white)),
-                style: TextStyle(
-                  color: Colors.blue,
-                )),
-            Row(
+          child: SingleChildScrollView(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                    child: DropdownButton(
-                  isExpanded: true,
-                  hint: Text("select iteams"),
-                  value: fromCurrency,
-                  items: [
-                    'INR',
-                    'USD',
-                    'CAD',
-                    'EUR',
-                    'GBR',
-                    'JPY',
-                    'CNY',
-                    'ADU'
-                  ]
-                      .map((unit) =>
-                          DropdownMenuItem(value: unit, child: Text(unit)))
-                      .toList(),
-                  onChanged: (value) {
+                Text(
+                  'Supported Currencies:',
+                  style: GoogleFonts.lato(
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  '1. INR (Indian Rupee)\n2. USD (United States Dollar)\n3. CAD (Canadian Dollar)\n4. EUR (Euro)\n5. GBP (British Pound)\n6. JPY (Japanese Yen)\n7. CNY (Chinese Yuan)\n8. AUD (Australian Dollar)',
+                  textAlign: TextAlign.left,
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    result.isEmpty ? 'Enter the amount to convert' : result,
+                    style: GoogleFonts.lato(
+                      textStyle: const TextStyle(
+                        shadows: [
+                          Shadow(
+                            offset: Offset(2.0, 2.0),
+                            blurRadius: 3.0,
+                            color: Colors.blueGrey,
+                          ),
+                        ],
+                        color: Colors.black,
+                        fontSize: 22,
+                      ),
+                    ),
+                  ),
+                ),
+                TextField(
+                  controller: currencyConverter,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Colors.blueGrey,
+                    hintText: "Please enter the amount",
+                    hintStyle: TextStyle(color: Colors.white),
+                    border: OutlineInputBorder(),
+                  ),
+                  style: const TextStyle(color: Colors.white),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        hint: const Text("Select Currency"),
+                        value: fromCurrency,
+                        items: const [
+                          'INR',
+                          'USD',
+                          'CAD',
+                          'EUR',
+                          'GBP',
+                          'JPY',
+                          'CNY',
+                          'AUD'
+                        ]
+                            .map((unit) => DropdownMenuItem(
+                                  value: unit,
+                                  child: Text(unit),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            fromCurrency = value!;
+                          });
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Text(
+                      'to',
+                      style: GoogleFonts.lato(
+                        textStyle: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: DropdownButton<String>(
+                        isExpanded: true,
+                        value: toCurrency,
+                        items: const [
+                          'INR',
+                          'USD',
+                          'CAD',
+                          'EUR',
+                          'GBP',
+                          'JPY',
+                          'CNY',
+                          'AUD'
+                        ]
+                            .map((unit) => DropdownMenuItem(
+                                  value: unit,
+                                  child: Text(unit),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          setState(() {
+                            toCurrency = value!;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    double converter =
+                        double.tryParse(currencyConverter.text) ?? 0;
+                    double convertedCurrency =
+                        currency(converter, fromCurrency, toCurrency);
                     setState(() {
-                      fromCurrency = value!;
+                      result =
+                          '$converter $fromCurrency = ${convertedCurrency.toStringAsFixed(2)} $toCurrency';
                     });
                   },
-                )),
-                Text('to',
-                    style:
-                        GoogleFonts.lato(textStyle: TextStyle(fontSize: 20))),
-                Expanded(
-                    child: DropdownButton2(
-                  value: toCurrency,
-                  items: [
-                    'INR',
-                    'USD',
-                    'CAD',
-                    'EUR',
-                    'GBR',
-                    'JPY',
-                    'CNY',
-                    'ADU'
-                  ]
-                      .map((unit) =>
-                          DropdownMenuItem(value: unit, child: Text(unit)))
-                      .toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      toCurrency = value!;
-                    });
-                  },
-                ))
+                  child: const Text('Convert'),
+                ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  double converter =
-                      double.tryParse(currencyConverter.text) ?? 0;
-                  double convertedcurrency =
-                      currency(converter, fromCurrency, toCurrency);
-                  setState(() {
-                    result = '$convertedcurrency  $toCurrency';
-                  });
-                },
-                child: Text('Convert'))
-          ]),
+          ),
         ),
       ),
     );

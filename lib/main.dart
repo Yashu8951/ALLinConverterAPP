@@ -1,6 +1,5 @@
 import 'login.dart';
 import 'package:flutter/material.dart';
-import 'curencuconver.dart';
 
 void main() {
   runApp(MyApp());
