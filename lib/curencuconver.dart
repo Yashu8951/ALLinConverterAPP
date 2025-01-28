@@ -209,156 +209,169 @@ class _CurrencyConverterState extends State<CurrencyConverter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Currency Converter'),
-        titleTextStyle: const TextStyle(
-          fontStyle: FontStyle.italic,
-          fontSize: 25,
-          color: Colors.white,
+        appBar: AppBar(
+          title: const Text('Currency Converter'),
+          titleTextStyle: const TextStyle(
+            fontStyle: FontStyle.italic,
+            fontSize: 25,
+            color: Colors.white,
+          ),
+          backgroundColor: Colors.blue,
+          elevation: 10,
+          centerTitle: true,
         ),
-        backgroundColor: Colors.blue,
-        elevation: 10,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Supported Currencies:',
-                  style: GoogleFonts.lato(
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  '1. INR (Indian Rupee)\n2. USD (United States Dollar)\n3. CAD (Canadian Dollar)\n4. EUR (Euro)\n5. GBP (British Pound)\n6. JPY (Japanese Yen)\n7. CNY (Chinese Yuan)\n8. AUD (Australian Dollar)',
-                  textAlign: TextAlign.left,
-                ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    result.isEmpty ? 'Enter the amount to convert' : result,
-                    style: GoogleFonts.lato(
-                      textStyle: const TextStyle(
-                        shadows: [
-                          Shadow(
-                            offset: Offset(2.0, 2.0),
-                            blurRadius: 3.0,
-                            color: Colors.blueGrey,
-                          ),
-                        ],
-                        color: Colors.black,
-                        fontSize: 22,
-                      ),
-                    ),
-                  ),
-                ),
-                TextField(
-                  controller: currencyConverter,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Colors.blueGrey,
-                    hintText: "Please enter the amount",
-                    hintStyle: TextStyle(color: Colors.white),
-                    border: OutlineInputBorder(),
-                  ),
-                  style: const TextStyle(color: Colors.white),
-                ),
-                const SizedBox(height: 20),
-                Row(
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/currencyConverter.app.jpeg.jpeg'),
+                  fit: BoxFit.fitHeight),
+            ),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        hint: const Text("Select Currency"),
-                        value: fromCurrency,
-                        items: const [
-                          'INR',
-                          'USD',
-                          'CAD',
-                          'EUR',
-                          'GBP',
-                          'JPY',
-                          'CNY',
-                          'AUD'
-                        ]
-                            .map((unit) => DropdownMenuItem(
-                                  value: unit,
-                                  child: Text(unit),
-                                ))
-                            .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            fromCurrency = value!;
-                          });
-                        },
-                      ),
-                    ),
-                    const SizedBox(width: 10),
                     Text(
-                      'to',
+                      'Supported Currencies:',
                       style: GoogleFonts.lato(
-                        textStyle: const TextStyle(fontSize: 18),
+                        textStyle: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        value: toCurrency,
-                        items: const [
-                          'INR',
-                          'USD',
-                          'CAD',
-                          'EUR',
-                          'GBP',
-                          'JPY',
-                          'CNY',
-                          'AUD'
-                        ]
-                            .map((unit) => DropdownMenuItem(
-                                  value: unit,
-                                  child: Text(unit),
-                                ))
-                            .toList(),
-                        onChanged: (value) {
-                          setState(() {
-                            toCurrency = value!;
-                          });
-                        },
+                    const SizedBox(height: 10),
+                    const Text(
+                      '1. INR (Indian Rupee)\n2. USD (United States Dollar)\n3. CAD (Canadian Dollar)\n4. EUR (Euro)\n5. GBP (British Pound)\n6. JPY (Japanese Yen)\n7. CNY (Chinese Yuan)\n8. AUD (Australian Dollar)',
+                      textAlign: TextAlign.left,
+                    ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        result.isEmpty ? 'Enter the amount to convert' : result,
+                        style: GoogleFonts.lato(
+                          textStyle: const TextStyle(
+                            shadows: [
+                              Shadow(
+                                offset: Offset(2.0, 2.0),
+                                blurRadius: 3.0,
+                                color: Colors.blueGrey,
+                              ),
+                            ],
+                            color: Colors.black,
+                            fontSize: 22,
+                          ),
+                        ),
                       ),
+                    ),
+                    TextField(
+                      controller: currencyConverter,
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(
+                        filled: true,
+                        fillColor: Color.fromARGB(188, 251, 254, 255),
+                        hintText: "Please enter the amount",
+                        hintStyle:
+                            TextStyle(color: Color.fromARGB(255, 41, 32, 32)),
+                        border: OutlineInputBorder(),
+                      ),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 40, 38, 38)),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: DropdownButton<String>(
+                            iconEnabledColor: Colors.black,
+                            iconSize: 40,
+                            isExpanded: true,
+                            hint: const Text("Select Currency"),
+                            value: fromCurrency,
+                            items: const [
+                              'INR',
+                              'USD',
+                              'CAD',
+                              'EUR',
+                              'GBP',
+                              'JPY',
+                              'CNY',
+                              'AUD'
+                            ]
+                                .map((unit) => DropdownMenuItem(
+                                      value: unit,
+                                      child: Text(unit),
+                                    ))
+                                .toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                fromCurrency = value!;
+                              });
+                            },
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          'to',
+                          style: GoogleFonts.lato(
+                            textStyle: const TextStyle(fontSize: 18),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: DropdownButton<String>(
+                            iconEnabledColor: Colors.black,
+                            iconSize: 40,
+                            isExpanded: true,
+                            value: toCurrency,
+                            items: const [
+                              'INR',
+                              'USD',
+                              'CAD',
+                              'EUR',
+                              'GBP',
+                              'JPY',
+                              'CNY',
+                              'AUD'
+                            ]
+                                .map((unit) => DropdownMenuItem(
+                                      value: unit,
+                                      child: Text(unit),
+                                    ))
+                                .toList(),
+                            onChanged: (value) {
+                              setState(() {
+                                toCurrency = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        double converter =
+                            double.tryParse(currencyConverter.text) ?? 0;
+                        double convertedCurrency =
+                            currency(converter, fromCurrency, toCurrency);
+                        setState(() {
+                          result =
+                              '$converter $fromCurrency = ${convertedCurrency.toStringAsFixed(2)} $toCurrency';
+                        });
+                      },
+                      child: const Text('Convert'),
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    double converter =
-                        double.tryParse(currencyConverter.text) ?? 0;
-                    double convertedCurrency =
-                        currency(converter, fromCurrency, toCurrency);
-                    setState(() {
-                      result =
-                          '$converter $fromCurrency = ${convertedCurrency.toStringAsFixed(2)} $toCurrency';
-                    });
-                  },
-                  child: const Text('Convert'),
-                ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

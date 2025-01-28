@@ -21,7 +21,7 @@ class Firstpage extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/backgroundImGage.jpg'),
+                image: AssetImage('assets/Designer.jpeg'),
                 fit: BoxFit.fitHeight,
               ),
             ),
@@ -30,7 +30,11 @@ class Firstpage extends StatelessWidget {
                 children: [
                   Text(
                     'This converter allows users to quickly and efficiently calculate the value of one currency in terms of another, making it a handy tool for managing finances or staying informed about exchange rates.',
-                    style: GoogleFonts.lato(fontSize: 20),
+                    style: GoogleFonts.lato(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: const Color.fromARGB(255, 239, 229, 229),
+                        fontStyle: FontStyle.italic),
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -45,7 +49,12 @@ class Firstpage extends StatelessWidget {
                   ),
                   Text(
                     'This tool provides a quick and efficient way to calculate weight in different units, helping you stay on top of your health and fitness goals.',
-                    style: GoogleFonts.lato(fontSize: 20),
+                    style: GoogleFonts.lato(
+                      fontSize: 20,
+                      fontStyle: FontStyle.italic,
+                      color: const Color.fromARGB(255, 239, 229, 229),
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {

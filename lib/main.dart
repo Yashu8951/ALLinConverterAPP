@@ -9,6 +9,9 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Firstpage());
+    return MaterialApp(
+        title: "All In Converter App ",
+        theme: ThemeData.light(),
+        home: Firstpage());
   }
 }

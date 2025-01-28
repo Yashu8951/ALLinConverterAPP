@@ -63,4 +63,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/backgroundImGage.jpg
+    - assets\currencyConverter.app.jpeg.jpeg
+    - assets\Designer.jpeg
+    - assets\weight.jpeg
